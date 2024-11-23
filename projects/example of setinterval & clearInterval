@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Hamid</title>
+</head>
+
+<body>
+    <h1>Code with Hamid</h1>
+    <button id="stop">Stop</button>
+    <button id="start">Start</button>
+
+    <div id="output"></div>
+
+    <script>
+        let intervalId;
+
+        // Start Button Functionality
+        document.getElementById('start').onclick = function () {
+            if (!intervalId) { // Prevent multiple intervals from starting
+                intervalId = setInterval(() => {
+                    const time = new Date().toLocaleTimeString();
+                    const outputDiv = document.getElementById('output');
+                    outputDiv.innerHTML += `Hamid - ${time}<br>`;
+                }, 2000); // 2 seconds interval
+            }
+        };
+
+        // Stop Button Functionality
+        document.getElementById('stop').onclick = function () {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null; // Reset the interval ID
+            }
+        };
+    </script>
+</body>
+
+</html>
